@@ -22,7 +22,8 @@ export const getUserByEmail = async (email: string) => {
   try {
     const data = await prisma.user.findUnique({
       where: { email },
-    });
+      include:{cart:true}
+    });  
     return data;
   } catch (error) {
     throw new Error("Something went wrong ");

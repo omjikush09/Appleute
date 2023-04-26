@@ -12,7 +12,7 @@ export const productCreateValidation = async (
   if (error != null) {
     return errorFunction(
       res,
-      `Error in User Data ${error?.message} || "someting wrong in data" `
+      `Error in User Data ${error?.message} `
     );
   } else {
     next();

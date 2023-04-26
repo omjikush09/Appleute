@@ -20,7 +20,7 @@ const generateJWT = async (id: string) => {
       userId: id,
     },
     JWT_SECRET,
-    { expiresIn: "10h" }
+    { expiresIn: "40h" }
   );
 };
 
@@ -71,9 +71,11 @@ export const loginUser = async (req: Request, res: Response) => {
       );
       if (validPassword) {
         const jwtToken = await generateJWT(String(userData.id));
+        userData.password=""
         return res.json({
           status: true,
           jwtToken,
+          user:userData
         });
       } else {
         return errorFunction(res, "User and Password Deos not match", 400);
