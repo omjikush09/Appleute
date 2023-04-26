@@ -1,7 +1,7 @@
 import express from "express";
 import * as dotenv from "dotenv";
 import { PORT } from "./config/config.keys";
-import cors from "cors"
+import cors from "cors";
 // Router
 import authRouter from "./routes/auth.route";
 import userRouter from "./routes/user.route";
@@ -15,10 +15,11 @@ const app = express();
 // regular middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-  "origin":"*"
-}
-))
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use("/api/", authRouter);
 app.use("/api/", userRouter);

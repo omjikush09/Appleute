@@ -71,11 +71,11 @@ export const loginUser = async (req: Request, res: Response) => {
       );
       if (validPassword) {
         const jwtToken = await generateJWT(String(userData.id));
-        userData.password=""
+        userData.password = "";
         return res.json({
           status: true,
           jwtToken,
-          user:userData
+          user: userData,
         });
       } else {
         return errorFunction(res, "User and Password Deos not match", 400);

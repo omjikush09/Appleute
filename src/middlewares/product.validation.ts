@@ -10,10 +10,7 @@ export const productCreateValidation = async (
   const payload = req.body;
   const { error } = createProductSchema.validate(payload);
   if (error != null) {
-    return errorFunction(
-      res,
-      `Error in User Data ${error?.message} `
-    );
+    return errorFunction(res, `Error in User Data ${error?.message} `);
   } else {
     next();
   }
