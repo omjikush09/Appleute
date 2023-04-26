@@ -10,7 +10,7 @@ describe("User API test", () => {
   it("Create User", (done: any) => {
     chai
       .request(server)
-      .post("/api/")
+      .post("/api/user")
       .send({
         email: "omjikush09@gmail.com",
         password: "232343",
