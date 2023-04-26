@@ -6,7 +6,7 @@ export const createOrder = async (cartId: number) => {
   if (cart?.products.length === 0) {
     return null;
   }
-  const products = cart?.products.map((product:any) => {
+  const products = cart?.products.map((product: any) => {
     return { id: product.id };
   });
 
