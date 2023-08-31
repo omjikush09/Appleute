@@ -7,6 +7,7 @@ import { createUser, loginUser } from "./../controllers/auth.controller";
 
 const router = express.Router();
 
+
 // Create New User
 router.post("/user", userCreateValidation, createUser);
 
