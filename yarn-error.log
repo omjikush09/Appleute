@@ -1,0 +1,82 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\omjim\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add jest
+
+PATH: 
+  C:\Users\omjim\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\omjim\bin;C:\Program Files\Microsoft\jdk-11.0.18.10-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\dotnet;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Users\omjim\AppData\Local\Android\Sdk\platform-tools;C:\msys64\mingw64\bin;C:\Program Files\Go\bin;C:\Program Files\Amazon\AWSSAMCLI\bin;C:\Program Files\Amazon\AWSCLIV2;C:\Terraform;C:\Users\omjim\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\omjim\AppData\Local\Programs\Python\Python311;C:\Users\omjim\AppData\Local\Microsoft\WindowsApps;C:\Users\omjim\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\omjim\AppData\Roaming\npm;C:\Users\omjim\go\bin;C:\Users\omjim\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\ScriptsC;C:\Program Files\Git\Users\omjim\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\Sc;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.15.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\omjim\AppData\Local\Yarn\Cache\v6\npm-find-up-5.0.0-4c92819ecb7083561e4f4a240a86be5198f536fc-integrity\node_modules\find-up\index.d.ts' -> 'E:\web development\company test\Appleute\node_modules\mocha\node_modules\find-up\index.d.ts'
+
+npm manifest: 
+  {
+    "name": "appleute",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "ts-mocha src/**/*.spec.ts",
+      "deploy": "pnpm install && npx prisma db push && npx prisma generate && tsc",
+      "build": "tsc",
+      "check-types": "tsc --pretty --noEmit",
+      "check-format": "prettier --check .",
+      "check-lint": "eslint . --ext ts",
+      "format": "prettier --write .",
+      "dev": "nodemon src/index.ts",
+      "start": "node ./dist/index.js",
+      "test-all": "pnpm run check-format && pnpm run check-lint && pnpm run check-types && pnpm run build",
+      "prepare": "husky install"
+    },
+    "keywords": [],
+    "author": "Omji Kushwaha",
+    "license": "ISC",
+    "dependencies": {
+      "@prisma/client": "^4.6.1",
+      "@types/express": "^4.17.14",
+      "bcryptjs": "^2.4.3",
+      "cors": "^2.8.5",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "joi": "^17.7.0",
+      "jsonwebtoken": "^8.5.1",
+      "prisma": "^4.6.1"
+    },
+    "devDependencies": {
+      "@types/bcryptjs": "^2.4.2",
+      "@types/chai": "^4.3.4",
+      "@types/cors": "^2.8.13",
+      "@types/expect": "^24.3.0",
+      "@types/jsonwebtoken": "^8.5.9",
+      "@types/mocha": "^10.0.1",
+      "@types/node": "^18.11.9",
+      "chai": "^4.3.7",
+      "chai-http": "^4.3.0",
+      "eslint": "^8.39.0",
+      "eslint-config-prettier": "^8.8.0",
+      "eslint-config-standard-with-typescript": "^34.0.1",
+      "eslint-plugin-import": "^2.25.2",
+      "eslint-plugin-n": "^15.0.0",
+      "eslint-plugin-promise": "^6.0.0",
+      "husky": "^8.0.0",
+      "mocha": "^10.2.0",
+      "nodemon": "^2.0.20",
+      "prettier": "^2.8.8",
+      "ts-mocha": "^10.0.0",
+      "ts-node": "^10.9.1",
+      "typescript": "^4.9.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
