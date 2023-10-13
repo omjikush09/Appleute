@@ -19,7 +19,7 @@ export const createNewPoroduct = async (
       data,
     });
   } catch (error) {
-    errorFunction(res, "Something went wrong or category deos not exist", 501);
+    errorFunction(res, "Something went wr ong or category deos not exist", 501);
   }
 };
 
