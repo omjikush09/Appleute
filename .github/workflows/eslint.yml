@@ -5,9 +5,7 @@ on: [pull_request]
 jobs:
   node_test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
+    permissions: write-all
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
