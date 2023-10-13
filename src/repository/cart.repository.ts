@@ -19,7 +19,7 @@ export const getCartById = async (id: number) => {
     });
     return data;
   } catch (error) {
-    throw new Error("Something went wrong ");
+    throw new Error("Something went wrong  ");
   }
 };
 export const getCartByUserId = async (userId: number) => {
