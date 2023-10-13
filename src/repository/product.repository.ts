@@ -7,7 +7,7 @@ export const createProduct = async (categoryId: number, product: any) => {
     });
     return data;
   } catch (error) {
-    throw new Error("Something went wrong ");
+    throw new Error("Something wentsdwrong ");
   }
 };
 
