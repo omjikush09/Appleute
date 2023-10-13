@@ -14,7 +14,7 @@ export const createNewUser = async (user: User) => {
   } catch (error) {
     console.log(error);
 
-    throw new Error("Something went wrong  ");
+    throw new Error("Something went wro g  ");
   }
 };
 
