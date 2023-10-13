@@ -14,7 +14,8 @@
     "dev": "nodemon src/index.ts",
     "start": "node ./dist/index.js",
     "test-all": "pnpm run check-format && pnpm run check-lint && pnpm run check-types && pnpm run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint . --ext ts"
   },
   "keywords": [],
   "author": "Omji Kushwaha",
