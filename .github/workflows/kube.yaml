@@ -8,5 +8,10 @@ jobs:
     runs-on: arc-runner-set
     steps:
     - run: echo "🎉 This job uses runner scale set runners!"
-    - run: curl -v -XGET  -H "User-Agent: kubectl.exe/v1.27.2 (windows/amd64) kubernetes/7f6f68f" -H "Accept: application/json;g=apidiscovery.k8s.io;v=v2beta1;as=APIGroupDiscoveryList,application/json" 'https://5x68wo.c1.de1.k8s.ovh.net/api?timeout=32s'
+    - uses: actions/checkout@v1
+    - uses: actions-hub/kubectl@master
+      env:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+      with:
+        args: get pods
 
