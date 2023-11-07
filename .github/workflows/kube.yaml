@@ -9,6 +9,7 @@ jobs:
     steps:
     - run: echo "🎉 This job uses runner scale set runners!"
     - uses: actions/checkout@v1
+    - run: ls
     - uses: actions-hub/kubectl@master
       env:
         KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
