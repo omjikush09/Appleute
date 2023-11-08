@@ -11,6 +11,8 @@ jobs:
     - name: Install update
       run: |
         sudo apt update
+        cat /etc/os-release
+
     - name: Install Docker
       run: | 
         # Add Docker's official GPG key:
