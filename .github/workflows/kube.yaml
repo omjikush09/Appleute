@@ -54,7 +54,7 @@ jobs:
     steps:
     
       - name: Kube
-        run: echo "df"
+        run: docker -v
       - uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
