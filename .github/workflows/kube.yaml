@@ -52,7 +52,9 @@ jobs:
     needs: Explore-GitHub-Actions
     runs-on: arc-runner-set
     steps:
+    
       - name: Kube
+        run: echo "df"
       - uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
