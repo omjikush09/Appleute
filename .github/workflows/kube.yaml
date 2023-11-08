@@ -4,42 +4,50 @@ on:
 
 jobs:
   Explore-GitHub-Actions:
-    # You need to use the INSTALLATION_NAME from the previous step
     runs-on: arc-runner-set
+
     steps:
-    - run: echo "🎉 This job uses runner scale set runners!"
-    - name: Install update
-      run: |
-        sudo apt update
-        cat /etc/os-release
+      - name: Check OS Version
+        run: |
+          lsb_release -a
+        shell: bash
 
-    - name: Install Docker
-      run: | 
-        # Add Docker's official GPG key:
-        sudo apt-get update
-        sudo apt-get install ca-certificates curl gnupg
-        sudo install -m 0755 -d /etc/apt/keyrings
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-        sudo chmod a+r /etc/apt/keyrings/docker.gpg
+      - name: Install Docker
+        run: |
+          # Add Docker's official GPG key:
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ca-certificates curl software-properties-common
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-        # Add the repository to Apt sources:
-        echo \
-        "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-        "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-        sudo apt-get update
-        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-        docker -v
-    - name: Install Nodejs
-      run: | 
-        sudo apt install nodejs
-        node -v
-        npm -v
-    - uses: actions/checkout@v1
-    - run: ls
-    - uses: actions-hub/kubectl@master
-      env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-      with:
-        args: get pods
+          # Add the Docker repository to APT sources:
+          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+          sudo apt-get update
+          sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+          docker -v
+        shell: bash
+
+      - name: Install Node.js
+        run: |
+          # Install Node.js using NodeSource repository
+          curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo gpg --dearmor -o /usr/share/keyrings/nodesource-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/nodesource-archive-keyring.gpg] https://deb.nodesource.com/node_14.x $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/nodesource.list > /dev/null
+
+          sudo apt-get update
+          sudo apt-get install -y nodejs
+          node -v
+          npm -v
+        shell: bash
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: List Files
+        run: ls
+
+      - name: Check Kubernetes Pods
+        run: |
+          docker run actions-hub/kubectl get pods
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
 
