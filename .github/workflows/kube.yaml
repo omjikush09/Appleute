@@ -42,8 +42,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: List Files
-          - run: ls
-            run: docker -v
+        run: |
+          ls
+          docker -v
+              
+          
+        
+          
 
       - uses: actions-hub/kubectl@master
         env:
