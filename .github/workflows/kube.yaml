@@ -5,12 +5,6 @@ on:
 jobs:
   Explore-GitHub-Actions:
     runs-on: arc-runner-set
-    services:
-      docker:
-        image: docker:dind
-        ports:
-          - 2375:2375
-        options: --privileged
     steps:
       - name: Check OS Version
         run: |
@@ -48,11 +42,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: List Files
-        run: ls
+          - run: ls
+            run: docker -v
 
-      - name: Check Kubernetes Pods
-        run: |
-          docker run actions-hub/kubectl get pods
+      - uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-
+        with:
+          args: get pods
