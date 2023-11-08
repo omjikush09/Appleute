@@ -5,13 +5,18 @@ on:
 jobs:
   Explore-GitHub-Actions:
     runs-on: arc-runner-set
-
+    services:
+      docker:
+        image: docker:dind
+        ports:
+          - 2375:2375
+        options: --privileged
     steps:
       - name: Check OS Version
         run: |
           lsb_release -a
         shell: bash
-
+        
       - name: Install Docker
         run: |
           # Add Docker's official GPG key:
