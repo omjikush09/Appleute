@@ -5,6 +5,8 @@ on:
 jobs:
   Explore-GitHub-Actions:
     runs-on: arc-runner-set
+    container: 
+      image: docker
     steps:
       - name: Check OS Version
         run: |
