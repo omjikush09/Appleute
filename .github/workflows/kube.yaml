@@ -53,6 +53,8 @@ jobs:
   Kubr:
     needs: Explore-GitHub-Actions
     runs-on: arc-runner-set
+    container:
+      image: docker
     steps:
     
       - name: Kube
