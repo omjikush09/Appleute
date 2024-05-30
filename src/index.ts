@@ -27,6 +27,9 @@ app.use("/api/", postRouter);
 app.use("/api/", categoryRouter);
 app.use("/api/", orderRouter);
 app.use("/api/", cartRouter);
+app.get("/", (req:any, res:any) => {
+  res.send("Hello World");
+});
 
 export default app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT} 🚀`);
